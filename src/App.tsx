@@ -14,6 +14,7 @@ import AppErrorBoundary from "./components/UI/AppErrorBoundary";
 const Login = lazy(() => import("./pages/Login/Login"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 const UsersPage = lazy(() => import("./pages/Users/UsersPage"));
+const UserDetails = lazy(() => import("./pages/UserDetails/UserDetails"));
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/login" replace /> },
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/users", element: <UsersPage /> },
+      { path: "/users/:id", element: <UserDetails /> },
       { path: "*", element: <Navigate to="/dashboard" replace /> },
     ],
   },

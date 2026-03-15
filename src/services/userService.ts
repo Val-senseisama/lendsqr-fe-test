@@ -13,4 +13,14 @@ export const userService = {
       throw error;
     }
   },
+
+  getUserById: async (id: string): Promise<User | undefined> => {
+    try {
+      const users = await userService.getUsers();
+      return users.find((u) => u.id === id);
+    } catch (error) {
+      console.error("Error getting user by id:", error);
+      return undefined;
+    }
+  },
 };
