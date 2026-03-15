@@ -7,14 +7,26 @@ import {
 import RouteError from "./components/UI/RouteError";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./components/UI/ProtectedRoute";
 import PageLoader from "./components/UI/PageLoader";
 import AppErrorBoundary from "./components/UI/AppErrorBoundary";
 
 const Login = lazy(() => import("./pages/Login/Login"));
+const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
+const UsersPage = lazy(() => import("./pages/Users/UsersPage"));
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/login" replace /> },
   { path: "/login", element: <Login />, errorElement: <RouteError /> },
+  {
+    element: <ProtectedRoute />,
+    errorElement: <RouteError />,
+    children: [
+      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/users", element: <UsersPage /> },
+      { path: "*", element: <Navigate to="/dashboard" replace /> },
+    ],
+  },
 ]);
 
 const App: React.FC = () => {

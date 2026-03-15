@@ -1,0 +1,63 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $surface-background;
+
+  .layout-body {
+    display: flex;
+    flex: 1;
+    margin-top: 100px;
+
+    @include tablet {
+      margin-top: 110px; // accounts for navbar + search row on tablet
+    }
+
+    @include mobile {
+      margin-top: 68px; // single-row navbar on mobile
+    }
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0; // prevent flex item from overflowing parent
+    margin-left: 283px;
+    padding: 60px;
+    min-height: calc(100vh - 100px);
+    transition: margin-left 0.3s ease;
+
+    @include tablet {
+      margin-left: 0;
+      padding: 30px 20px;
+      overflow-x: hidden;
+    }
+
+    @include mobile {
+      padding: 20px 15px;
+    }
+  }
+
+  // Overlay — always hidden, only shown on mobile when sidebar is open
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 899;
+  }
+
+  // Sidebar open state (only meaningful on tablet/mobile)
+  &.sidebar-open {
+    @include tablet {
+      .sidebar-overlay {
+        display: block;
+      }
+    }
+  }
+}

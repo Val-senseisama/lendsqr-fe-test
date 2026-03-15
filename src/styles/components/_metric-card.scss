@@ -1,0 +1,98 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.metric-card {
+  background: $white;
+  border: 1px solid $border;
+  box-shadow: var(--card-shadow);
+  border-radius: 4px;
+  padding: 20px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 160px;
+
+  @include mobile {
+    padding: 16px;
+    min-height: 120px;
+  }
+
+  .icon-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include mobile {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 10px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  .label {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: $text-secondary;
+    margin: 0 0 12px 0;
+
+    @include mobile {
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .value {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: $text-color;
+    margin: 0;
+
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  &.skeleton {
+    .icon-container {
+      background-color: $border;
+      margin-bottom: 14px;
+    }
+
+    .label-skeleton {
+      height: 14px;
+      width: 60%;
+      background-color: $border;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    .value-skeleton {
+      height: 24px;
+      width: 40%;
+      background-color: $border;
+      border-radius: 2px;
+    }
+  }
+}

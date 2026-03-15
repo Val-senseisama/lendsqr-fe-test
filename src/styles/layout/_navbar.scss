@@ -1,0 +1,291 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.navbar {
+  height: 100px;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 30px;
+  box-shadow: 3px 0 20px rgba(0, 0, 0, 0.04);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: 1px solid $border;
+
+  @include tablet {
+    padding: 0 20px;
+    height: auto;
+    min-height: 70px;
+    row-gap: 0;
+  }
+
+  @include mobile {
+    height: 68px;
+    min-height: 68px;
+    flex-wrap: nowrap;
+    padding: 0 8px;
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .menu-btn {
+      background: none;
+      border: none;
+      color: $text-color;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      padding: 0;
+      transition: opacity 0.3s ease;
+
+      @include tablet {
+        display: flex;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    .logo {
+      height: 30px;
+      width: auto;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  .navbar-center {
+    margin-left: 168.2px;
+
+    @include tablet {
+      margin-left: 0;
+      order: 3;
+      width: 100%;
+      padding: 0 0 12px;
+    }
+
+    @include mobile {
+      order: unset;
+      flex: 1;
+      width: auto;
+      padding: 0;
+      margin: 0 12px;
+    }
+
+    .search-container {
+      display: flex;
+      background-color: transparent;
+      width: 400px;
+      height: 40px;
+
+      @include tablet {
+        width: 100%;
+      }
+
+      @include mobile {
+        height: 34px;
+      }
+
+      input {
+        flex: 1;
+        border: 1px solid $text-color;
+        border-right: none;
+        border-radius: 8px 0 0 8px;
+        background-color: transparent;
+        padding: 12px 20px;
+        font-size: 14px;
+        color: $text-color;
+        outline: none;
+
+        &::placeholder {
+          color: $text-color;
+          opacity: 0.5;
+        }
+
+        @include mobile {
+          padding: 8px 10px;
+          font-size: 12px;
+        }
+      }
+
+      .search-btn {
+        background-color: $primary-color;
+        border: none;
+        width: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        cursor: pointer;
+        border-radius: 0 8px 8px 0;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        @include mobile {
+          width: 36px;
+          svg {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    @include tablet {
+      gap: 15px;
+    }
+
+    @include mobile {
+      gap: 10px;
+      flex-shrink: 0;
+      margin-left: 0;
+    }
+
+    .docs-link {
+      color: $text-color;
+      font-size: 16px;
+      font-weight: 400;
+      text-decoration: underline;
+      font-family: "Work Sans", sans-serif;
+      opacity: 0.8;
+      margin-right: 47px;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      @include tablet {
+        display: none;
+        margin-right: 0;
+      }
+    }
+
+    .notification-btn {
+      background: none;
+      border: none;
+      color: $text-color;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin-right: 30px;
+
+      @include tablet {
+        margin-right: 0;
+      }
+
+      @include mobile {
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+
+      .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        @include tablet {
+          width: 32px;
+          height: 32px;
+        }
+
+        @include mobile {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      .user-name {
+        font-weight: 500;
+        font-size: 16px;
+        color: $text-color;
+        font-family: "Work Sans", sans-serif;
+
+        @include tablet {
+          display: none;
+        }
+      }
+
+      .dropdown-icon {
+        color: $text-color;
+        transition: transform 0.3s ease;
+
+        &.rotate {
+          transform: rotate(180deg);
+        }
+
+        @include tablet {
+          display: none;
+        }
+      }
+
+      .profile-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 10px;
+        background-color: $white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: 180px;
+        z-index: 1010;
+        overflow: hidden;
+
+        @include tablet {
+          right: -10px;
+        }
+
+        .dropdown-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 20px;
+          color: $text-color;
+          font-family: "Work Sans", sans-serif;
+          font-size: 14px;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: rgba(var(--primary-rgb), 0.05);
+          }
+
+          &.logout {
+            color: #e4033b;
+            border-top: 1px solid $border;
+          }
+        }
+      }
+    }
+  }
+}
