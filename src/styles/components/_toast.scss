@@ -1,0 +1,53 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@import 'react-toastify/dist/ReactToastify.css';
+
+:root {
+  --toastify-color-light: #ffffff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: $primary-color;
+  --toastify-color-success: #39CDCC; // Using primary for success as it matches brand
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #e74c3c;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+
+  --toastify-toast-width: 350px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 64px;
+  --toastify-toast-max-height: 800px;
+  --toastify-toast-bd-radius: 4px;
+  --toastify-font-family: 'Avenir Next', 'Work Sans', sans-serif;
+  --toastify-z-index: 9999;
+  --toastify-text-color-light: $text-color;
+  --toastify-text-color-dark: #fff;
+}
+
+// Override specific classes if needed to match Lendsqr theme deeper
+.Toastify__toast {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid transparent; // Preparation for variant borders
+  
+  &-theme--light {
+    &.Toastify__toast--success {
+      border-left-color: var(--toastify-color-success);
+    }
+    &.Toastify__toast--error {
+      border-left-color: var(--toastify-color-error);
+    }
+    &.Toastify__toast--info {
+      border-left-color: var(--toastify-color-info);
+    }
+    &.Toastify__toast--warning {
+      border-left-color: var(--toastify-color-warning);
+    }
+  }
+}
+
+.Toastify__progress-bar {
+  background: var(--toastify-color-info);
+}

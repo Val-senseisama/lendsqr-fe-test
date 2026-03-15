@@ -1,0 +1,49 @@
+@use '../variables' as *;
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .base-input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid $border;
+    border-radius: 5px;
+    font-family: 'Avenir Next', 'Work Sans', sans-serif;
+    font-size: 14px;
+    color: $text-color;
+    background-color: $white;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: $text-secondary;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+
+  .secure-toggle {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: $primary-color;
+    font-family: 'Avenir Next', 'Work Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

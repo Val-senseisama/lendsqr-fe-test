@@ -1,0 +1,39 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.page-loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(var(--white-rgb), 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  @include flex-center;
+
+  .page-loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .page-loader-animation {
+      width: 160px;
+      height: 160px;
+    }
+
+    .page-loader-message {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-color;
+      letter-spacing: 0.02em;
+      opacity: 0.8;
+      animation: fade-pulse 1.8s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes fade-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1;   }
+}
