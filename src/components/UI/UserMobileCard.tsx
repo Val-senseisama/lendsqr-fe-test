@@ -12,7 +12,7 @@ const UserMobileCard: React.FC<Props> = ({ users }) => {
   const navigate = useNavigate();
 
   const handleClick = (user: UserSummary) => {
-    storageService.setSelectedUser(user as never);
+    storageService.setSelectedUser(user);
     navigate(`/users/${user.id}`);
   };
 

@@ -6,6 +6,7 @@ interface FilterModalProps {
   onFilter: (filters: FilterValues) => void;
   onReset: () => void;
   onClose: () => void;
+  organizations?: string[];
 }
 
 export interface FilterValues {
@@ -21,6 +22,7 @@ export const FilterModal: React.FC<FilterModalProps> = ({
   onFilter,
   onReset,
   onClose,
+  organizations = [],
 }) => {
   const [filters, setFilters] = useState<FilterValues>({
     organization: "",
@@ -53,20 +55,7 @@ export const FilterModal: React.FC<FilterModalProps> = ({
 
   return (
     <div className="filter-modal">
-      <button
-        className="close-filter"
-        onClick={onClose}
-        style={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
-          fontSize: "18px",
-          color: "#545F7D",
-          cursor: "pointer",
-        }}
-      >
-        ×
-      </button>
+      <button className="close-filter" onClick={onClose}>×</button>
       <div className="filter-field">
         <label>Organization</label>
         <select
@@ -75,9 +64,9 @@ export const FilterModal: React.FC<FilterModalProps> = ({
           onChange={handleChange}
         >
           <option value="">Select</option>
-          <option value="Lendsqr">Lendsqr</option>
-          <option value="Irorun">Irorun</option>
-          <option value="Lendstar">Lendstar</option>
+          {organizations.map((org) => (
+            <option key={org} value={org}>{org}</option>
+          ))}
         </select>
       </div>
 

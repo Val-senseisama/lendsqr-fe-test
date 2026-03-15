@@ -232,7 +232,10 @@ const Sidebar: React.FC = () => {
         />
         <div
           className="sidebar-item logout-item"
-          onClick={() => navigate("/login")}
+          onClick={() => {
+            localStorage.removeItem("isAuthenticated");
+            navigate("/login");
+          }}
         >
           <span className="icon">
             <LogoutIcon size={16} />

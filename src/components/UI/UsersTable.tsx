@@ -13,9 +13,10 @@ interface UsersTableProps {
   loading: boolean;
   onFilter: (filters: FilterValues) => void;
   onReset: () => void;
+  organizations?: string[];
 }
 
-export const UsersTable: React.FC<UsersTableProps> = ({ users, loading, onFilter, onReset }) => {
+export const UsersTable: React.FC<UsersTableProps> = ({ users, loading, onFilter, onReset, organizations = [] }) => {
   const navigate = useNavigate();
   const [activeFilterColumn, setActiveFilterColumn] = useState<string | null>(
     null,
@@ -71,6 +72,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ users, loading, onFilter
                       onFilter={handleFilter}
                       onReset={handleReset}
                       onClose={() => setActiveFilterColumn(null)}
+                      organizations={organizations}
                     />
                   )}
                 </div>
