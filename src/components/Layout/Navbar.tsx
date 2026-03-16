@@ -11,6 +11,7 @@ import {
   Clock,
   X,
   Loader,
+  BookOpen,
 } from "lucide-react";
 import userAvatar from "../../assets/hero.png";
 import { useTheme } from "../../hooks/useTheme";
@@ -169,7 +170,8 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
 
       <div className="navbar-right">
         <a href="#" className="docs-link">
-          Docs
+          <span className="docs-text">Docs</span>
+          <BookOpen size={20} className="docs-icon" />
         </a>
         <button className="notification-btn">
           <Bell size={26} />

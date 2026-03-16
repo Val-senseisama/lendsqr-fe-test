@@ -12,12 +12,12 @@
     flex: 1;
     margin-top: 100px;
 
-    @include tablet {
-      margin-top: 110px; // accounts for navbar + search row on tablet
+    @include not-desktop {
+      margin-top: 70px;
     }
 
     @include mobile {
-      margin-top: 68px; // single-row navbar on mobile
+      margin-top: 60px;
     }
   }
 
@@ -29,7 +29,7 @@
     min-height: calc(100vh - 100px);
     transition: margin-left 0.3s ease;
 
-    @include tablet {
+    @include not-desktop {
       margin-left: 0;
       padding: 30px 20px;
       overflow-x: hidden;
@@ -40,7 +40,7 @@
     }
   }
 
-  // Overlay — always hidden, only shown on mobile when sidebar is open
+  // Overlay — always hidden, only shown on non-desktop when sidebar is open
   .sidebar-overlay {
     display: none;
     position: fixed;
@@ -52,9 +52,9 @@
     z-index: 899;
   }
 
-  // Sidebar open state (only meaningful on tablet/mobile)
+  // Sidebar open state (only meaningful on non-desktop)
   &.sidebar-open {
-    @include tablet {
+    @include not-desktop {
       .sidebar-overlay {
         display: block;
       }

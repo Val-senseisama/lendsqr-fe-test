@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.svg";
 import { ChevronDown } from "lucide-react";
 import {
   BriefcaseIcon,
@@ -69,6 +70,9 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className="sidebar">
+      <div className="sidebar-logo-header">
+        <img src={logo} alt="Lendsqr Logo" />
+      </div>
       <div className="sidebar-scrollable">
         <div className="sidebar-section">
           <div
